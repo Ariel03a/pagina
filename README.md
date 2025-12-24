@@ -1,75 +1,55 @@
-# Proyecto-Final
+# Panel de Tecnologías Emergentes (React + Jest)
 
-# Sistema de Pedidos — Ionic + React
+## Descripción
+Durante el desarrollo del ejercicio, comencé replicando la aplicación de CodePen en VS Code para las futuras pruebas. 
+Inicialmente, GitHub Copilot me sugirió la estructura básica de los componentes (`TechnologyItem`, `TechnologyList`, `AddTechnologyForm`) y el uso de `useState` para manejar el estado. Estas sugerencias me dieron un punto de partida rápido y organizado. Al intentar ejecutar la aplicación en CodePen con React 18, apareció el error: *"Cannot destructure property 'useState' of 'React' as it is undefined"*. Asi que fue necesario un ajuste manual: cambié las librerías externas a **React 17** y utilicé `ReactDOM.render()` en lugar de la nueva API `createRoot()`. Este cambio permitió que la aplicación funcionara correctamente en el entorno de CodePen. Posteriormente, pasé a las pruebas automatizadas. Copilot sugirió la estructura inicial de los tests con `describe` y `test`, además del uso de `userEvent` para simular interacciones. 
 
-Este proyecto es una aplicación construida con Ionic y React que permite a los usuarios realizar pedidos seleccionando platos por categoría, cantidad y tipo. Incluye autenticación, visualización de pedidos cargados y una interfaz limpia y responsiva.
-Se basa en la opcion 4 de una aplicación de pizzería. Mostrando el frontend correspondiente a la materia y su conexión con el backend en una Maquina Virtual del mismo. 
-Importante usar "npm install"
-
-Video: https://youtu.be/0y6XapgpWcc 
+Finalmente, configuré Jest y Babel para que pudieran interpretar JSX. De lo contario, sin Babel, Jest no entiende el código JSX y las pruebas fallan. Con la configuración correcta (`babel.config.js` y `jest.config.js`), las pruebas se ejecutaron con éxito.
 
 ---
 
-##  Tecnologías utilizadas
-
-- [Ionic React](https://ionicframework.com/docs/react)
-- TypeScript
-- React Router
-- Context API
-- CSS personalizado
-- Axios
+## Código sugerido por la IA
+- **Estructura inicial de componentes en React**: Copilot generó funciones como `TechnologyItem`, `TechnologyList` y `AddTechnologyForm` con `props` y `useState`.
+- **Fragmentos de pruebas unitarias**: Copilot sugirió la estructura básica de los tests (`describe`, `test`) y el uso de `userEvent` para simular interacciones.
+- **Aserciones iniciales**: Copilot propuso validaciones como `toBeInTheDocument()` y `getByRole()`.
 
 ---
 
-##  Estructura del proyecto
-
-src/ 
-├── components/ 
-│ └── LogoutBottom.tsx 
-├── Context/ 
-│ └── authContext.tsx 
-├── Pages/ 
-│ └── Login.tsx 
-│ └── Pedido.tsx
-│ └── pedidosCargados.tsx 
-├── Services/ 
-│ └── apiService.ts 
-├── App.tsx 
-├── main.tsx
+## Código corregido o ajustado manualmente
+- **Compatibilidad con CodePen**: Cambié la versión de React a **17** y usé `ReactDOM.render()` en lugar de `createRoot()`.
+- **Validación visual de favoritos**: Añadí la clase `favorito` y estilos condicionales para que las pruebas detecten el cambio visual.
+- **Configuración de Jest y Babel**: Configuré `babel.config.js` y `jest.config.js` para que Jest pueda interpretar JSX y correr las pruebas.
 
 ---
 
-##  Explicación de rutas.
+## Aprendizajes
+- **Pruebas automatizadas en React**:  
+  - Es necesario configurar Babel para que Jest entienda JSX.  
+  - Testing Library se apoya en roles y accesibilidad semántica, lo que mejora la calidad de las pruebas.  
+  - Las pruebas permiten validar interacciones sin necesidad de recargar la página.
 
-- /LogoutBottom.tsx: Botón para cerrar sesión, probablemente visible en varias páginas.
-- /authContext.tsx: Es usado por Login.tsx para manejar el estado de autenticación. Usa y verifica el token generado par dar acceso.
--/Login.tx: Página de autenticación. El usuario ingresa sus credenciales como un correo y contraseña validos en la db para acceder al sistema.
-- /Pedido.tsx: Página principal para realizar pedidos. El usuario puede seleccionar platos, categorías, cantidades y tipos. Cada una esta disponible y una vez enviado el pedido se guarda en la base de datos. 
-- /pedidosCargados.tsx: Página de visualización de pedidos cargados por el usuario. Todos los pedidos muestran el estado, producto, categoria, cantidad, fecha y hora. 
-- /apiService.ts: Encargado de las llamas HTTP con el backend. Contienen las funcionen y operanmediante Axios.
-- /App.tsx: Se define las rutas mediante react Router y su comportamiento. 
-- /main.tsx: Encargado de definir la base de la aplicación.
-
----
-
-##  Problemas. 
-- Rendimiento: Uno de los problemas más críticos no considerados en la elaboración del proyecto fue el alcance y caracteristicas planteadas. Fue el equipo disponible, debido a limitaciones de como la RAM y o una gráfica decente, varias veces se colgó la VM o alguna de las pestañas como VS Code o el propio navegador.
-- Rutas: Al no documentar correctamente las rutas desde un inicio, se volvió insostenible las nuevas rutas existentes en el backend y luego las rutas del frontend. Muchos problemas no hubieran sucedido con una buena documentación desde el principio.
-- Valores incorrectos: Gran parte del tiempo perdido se debió a que no se respetaban los valores establecidos y por ende, la comunicación era inviable. 
+- **Uso de IA en el desarrollo**:  
+  - Copilot acelera la escritura de código y pruebas, pero requiere ajustes manuales para adaptarse al contexto real y sobre todo en la versiones.  
+  - La IA es útil para generar borradores y estructuras, mientras que el desarrollador asegura la compatibilidad y la calidad final.  
+  - Integrar IA en el flujo de trabajo ayuda a optimizar tiempo y enfocarse en la lógica de negocio.
 
 ---
 
-##  Conclusiones
-- Usar correctamente las rutas y respetar los valores que tanto como el backend y el frontend esperan recibir. Son puntos criticos para la comunicación de cada uno.
-- Comprobar mediante postman resulta siempre viable en pequeñas o medianas pruebas. Entendiendo así la lógica detrás. 
+## Entregables
+- Link de CodePen: https://codepen.io/Ariel03a/pen/MYyMgOo 
+- Repositorio con:
+  - Código fuente: Github
+  - Pruebas unitarias (`tests/App.test.jsx`)
+  - Archivo README.md  
+- Capturas de pantalla:
+  - Sugerencia generada por Copilot
+    
+    <img width="740" height="379" alt="image" src="https://github.com/user-attachments/assets/96ad0d83-fa55-4705-8fea-28bc1d91911b" />
+  - Código de prueba completado con apoyo de IA
+    
+    <img width="527" height="170" alt="image" src="https://github.com/user-attachments/assets/0cc95cf6-c4ef-404f-be32-b78aba976351" />
+    <img width="879" height="362" alt="image" src="https://github.com/user-attachments/assets/12f193af-d541-4dfc-a62b-f58f1f477318" />
 
----
+    
 
-##  Recomendaciones.
-- Modular el codigo para separar funciones y no olvidar qué hace cada una en el proceso.
-- Documentar el desarrollo del aplicativo y guardar sus caracteristicas como rutas. 
 
----
-
-##  Notas.
-- El backend cayo un total de 3 veces, 2 de ellas sin un respaldo. Por ello, siempre disponer de uno.
